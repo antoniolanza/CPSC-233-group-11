@@ -17,6 +17,9 @@ public class Project{
 		int wheel2next = 14;
 		int wheel3next = 15;
 		int winpayout = 0;
+		
+		// remove next line for proper implementation
+		boolean wheel2lock = false;
 
 		int wheel1 = new Random().nextInt(5);
 		if (wheel1 == 0) {
@@ -38,7 +41,9 @@ public class Project{
 			System.out.println("LOSE");
 		}
 		int wheel2 = new Random().nextInt(5);
-		if (wheel2 == 0) {
+		if (wheel2lock == true) {
+		}
+		else if (wheel2 == 0) {
 			wheel2result = 0;
 		}
 		else if (wheel2 == 1) {
