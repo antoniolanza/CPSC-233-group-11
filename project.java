@@ -15,26 +15,26 @@ public class project{
 	}
 
     public void play(){
-	boolean wheel2lock = false;
+	boolean wheel2lock = false; // only user can decide whether or not to lock wheel 
 	int wheel2 = 15;
 	int wheel2result = 8;
 	project game = new project();
-	int money = 100;
+	int money = 100; // user starts out with 100 coins they can use to play
 	boolean firstplay = true;
 	String y = "y";
 	Scanner keyboardint = new Scanner(System.in);
 	Scanner keyboardstr = new Scanner(System.in);
 	 while (money >= 0){
-	 System.out.println ("Insert 10, 20, OR 30 coins");
+	 System.out.println ("Insert 10, 20, OR 30 coins"); // asking user for how much they would like to put in
      int ammount = keyboardint.nextInt();
 	 
 		if (ammount == 10) {System.out.println("You Have Inserted 10 coins");
             money = money - 10;
             if (firstplay == false){    
-                System.out.print("Would you like to add an additinal 25 coins to lock the second wheel (y/n)");
+                System.out.print("Would you like to add an additinal 25 coins to lock the second wheel (y/n)"); // should the user see a favourable outcomeand would prefer to take a chance on larger winnings
                 String lock = keyboardstr.nextLine();
 				System.out.println(lock);
-                if (y.equals(lock)) {System.out.println("You Have locked the second wheel");
+                if (y.equals(lock)) {System.out.println("You Have locked the second wheel"); // only allowing the ability to lock the second wheel for the time being
                     money = money - 25;
 					wheel2lock = true;
 					wheel2 = wheel2result;
@@ -48,7 +48,7 @@ public class project{
         wheel2 = game.wheelspin(wheel2lock, wheel2, wheel2result);                        
             }
         
-        else if (ammount == 20) {System.out.println("You Have Inserted 20 coins");
+        else if (ammount == 20) {System.out.println("You Have Inserted 20 coins"); // the more the user puts in, the better odds they have of winning?
             money = money - 20;
 			if (firstplay == false){    
                 System.out.print("Would you like to add an additinal 25 coins to lock the second wheel (y/n)");
@@ -84,11 +84,11 @@ public class project{
 			else {firstplay = false;}
 			game.wheelspin(wheel2lock, wheel2, wheel2result);
             } 
-        else {System.out.println("Not valid ammount inserted");}
+        else {System.out.println("Not valid ammount inserted");} // for cases where user inputs a string or large/negative numbers
 		}
 	}	
 	
-    public int wheelspin(boolean wheel2lock, int wheel2, int wheel2result){
+    public int wheelspin(boolean wheel2lock, int wheel2, int wheel2result){ // wheel initialization
 			
 		String[] wheelArrayA = {"1", "2", "3", "4", "5"};
 		String[] wheelArrayB = {"1", "2", "3", "4", "5"};
@@ -107,7 +107,7 @@ public class project{
 		// remove next line for proper implementation
 		//boolean wheel2lock = false;
 
-		int wheel1 = new Random().nextInt(5);
+		int wheel1 = new Random().nextInt(5); // all randomly generated to determine position of wheel
 		if (wheel1 == 0) {
 			wheel1result = 0;
 		}
@@ -202,7 +202,7 @@ public class project{
 			wheel3next = 0;
 		}
 		else {
-			wheel3next = wheel3result + 1;
+			wheel3next = wheel3result + 1; // many possible permutations
 		}
 		
 		System.out.println("Wheel 1" + "\t" + "Wheel 2" + "\t" + "Wheel 3");
@@ -210,8 +210,8 @@ public class project{
 		System.out.println(wheel1result + "\t" + wheel2result + "\t" + wheel3result);
 		System.out.println(wheel1next + "\t" + wheel2next + "\t" + wheel3next);
 		
-		if ((wheel1result == wheel2result) && (wheel2result == wheel3result)) {
-			System.out.println("YOU WIN ON CENTER MATCH");
+		if ((wheel1result == wheel2result) && (wheel2result == wheel3result)) { // only three patterns that can win
+			System.out.println("YOU WIN ON CENTER MATCH"); 
 			winpayout = wheel2result + 1;
 		}
 		else if ((wheel1prev == wheel2result) && (wheel2result == wheel3next)) {
