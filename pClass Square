@@ -1,0 +1,26 @@
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+public class Square {
+	private Point topLeft;
+	private int width;
+	
+	public Square(Point topLeft, Point bottomRight){
+		length = (int)topLeft.distance(bottomRight)/2;
+		width = new Point(topLeft.getXCoord(), topLeft.getYCoord());
+	}
+	
+	public Square(Point length, int width) {
+		this.length = length;
+		this.width = width;
+	}
+	
+	public void moveDown(int amount) {
+		length.moveDown(amount);
+	}
+	
+	public void draw(Graphics g){
+		g.drawSquare(width.getXCoord(), width.getYCoord());
+		
+	}
+}
