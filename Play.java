@@ -6,21 +6,33 @@ import java.util.Scanner;
 public class Play{
     
     private int winpayout = 0; // inits a global win payout 
-    private Wheel[] wheels;
+    private Wheel[] wheels = new Wheel[3];
+    boolean[] lockSet = {false, false, false};
+    boolean[] wheellocks = new boolean[3];
+    
    
-    private int[] speeds;
+    private int[] speeds = new int[3];
     WinCheck win = new WinCheck();
     
     public Play(Wheel[] wheelArray, int[] speedArray){
-        wheels = new Wheel[wheelArray];
-        speeds = new int[speedArray];
+        Wheel[] wheels = new Wheel[wheelArray.length];
+	for (int i = 0; i < wheelArray.length; i++) {
+	    wheels[i] = wheelArray[i];
+	}
+        int[] speeds = new int[speedArray.length];
+	for (int i = 0; i < speedArray.length; i++) {
+	    speeds[i] = speedArray[i];
+	}
+	for (int i = 0; i < wheellocks.length; i++) {
+	    wheellocks[i] = lockSet[i];
+	}
     }
 
 
     public void play(){
         int money = 100;   
         boolean firstplay = true;
-		boolean[] wheellocks = {false, false, false};
+		
 		Project game = new Project();
         Scanner keyboardint = new Scanner(System.in); // keyboard input for integers
         while (money >= 10){
@@ -31,19 +43,19 @@ public class Play{
      
             if (ammount == 10) {System.out.println("You Have Inserted 10 coins");
                 money = money - 10;
-				wheelLock(money, firstplay, wheel2, wheel2lock);
+				wheelLock(money, firstplay);
 				winpayout = win.winPayout(wheels, wheellocks, speeds);	
             }
         
             else if (ammount == 20) {System.out.println("You Have Inserted 20 coins"); // the more the user puts in, the more money they can win
                 money = money - 20;
-                wheelLock(money, firstplay, wheel2, wheel2lock);
+                wheelLock(money, firstplay);
 				winpayout = win.winPayout(wheels, wheellocks, speeds);	
             }
 
 			else if (ammount == 30) {System.out.println("You Have Inserted 30 coins");
 				money = money - 30;
-				wheelLock(money,firstplay, wheel2, wheel2lock);
+				wheelLock(money,firstplay);
 				winpayout = win.winPayout(wheels, wheellocks, speeds);	
 			}
 			
@@ -51,7 +63,7 @@ public class Play{
 			}
     }
 	
-	public void wheelLock(int money, boolean firstplay, int wheel2 , boolean wheel2lock){
+	public void wheelLock(int money, boolean firstplay){
 		Scanner keyboardstr = new Scanner(System.in); // keyboard input for strings
 		
 		
@@ -73,4 +85,4 @@ public class Play{
 			firstplay = false;
 		}	
 	} 
-}	
+} 
