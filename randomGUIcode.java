@@ -12,6 +12,28 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 
+
+
+public class GUISlot{
+    JTextField text = new JTextField(20);
+    JLabel result = new JLabel("Insert 10, 20, OR 30 coins");
+    JButton insertButton10 = new JButton("10");
+    JButton insertButton20 = new JButton("20");
+    JButton insertButton30 = new JButton("30"); 
+
+
+    public void init(){ //initalizes JApplet
+        //Container contentPane = getContentPane();
+        contentPane.setBackground(Color.RED);
+        contentPane.setLayout(new FlowLayout());
+        contentPane.add(insertButton10);
+	contentPane.add(insertButton20);
+	contentPane.add(insertButton30);
+        contentPane.add(text);
+        contentPane.add(result);    
+    }
+}
+
 public class Project extends JApplet implements ActionListener{
     JTextField text = new JTextField(20);
     JLabel result = new JLabel("Insert 10, 20, OR 30 coins");
