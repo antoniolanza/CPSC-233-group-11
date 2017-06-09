@@ -37,7 +37,9 @@ public class GUISlot{
 public class Project extends JApplet implements ActionListener{
     JTextField text = new JTextField(20);
     JLabel result = new JLabel("Insert 10, 20, OR 30 coins");
-    JButton insertButton = new JButton(""); 
+	JButton insertButton = new JButton("10");
+	JButton insertButton = new JButton("20"); 
+	JButton insertButton = new JButton("30"); 
 
 
     public void init(){ //initalizes JApplet
