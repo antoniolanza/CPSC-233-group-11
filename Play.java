@@ -28,15 +28,22 @@ public class Play {
         wheelResult1 = wheel1.wheelSpin(wheelLock);
 	wheelResult2 = wheel2.wheelSpin(false);
 	int payoutMult = 0;
+
+	System.out.println(wheelResult0[0] + "\t" + wheelResult1[0] + "\t" + wheelResult2[0]);
+	System.out.println(wheelResult0[1] + "\t" + wheelResult1[1] + "\t" + wheelResult2[1]);
+	System.out.println(wheelResult0[2] + "\t" + wheelResult1[2] + "\t" + wheelResult2[2]);
 	
 	if ((wheelResult0[1] == wheelResult1[1]) && (wheelResult1[1] == wheelResult2[1])) {
 	    payoutMult = Integer.parseInt(wheelResult1[1]);
+	    System.out.println("YOU WIN ON CENTER MATCH");
 	}
 	else if ((wheelResult0[0] == wheelResult1[1]) && (wheelResult1[1] == wheelResult2[2])) {
 	    payoutMult = Integer.parseInt(wheelResult1[1]);
+	    System.out.println("YOU WIN ON TOP LEFT DIAGONAL MATCH");
 	}
 	else if ((wheelResult0[2] == wheelResult1[1]) && (wheelResult1[1] == wheelResult2[0])) {
 	    payoutMult = Integer.parseInt(wheelResult1[1]);
+	    System.out.println("YOU WIN ON BOTTOM LEFT DIAGONAL MATCH");
 	}
 	playerMoney = playerMoney + (payoutMult * buyIn);
         return playerMoney;
