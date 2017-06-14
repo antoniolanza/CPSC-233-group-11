@@ -10,9 +10,8 @@ public class Square extends Shape {
         
 
 	public void draw(Graphics g){
-		g.drawRect(topLeft.getXCoord(), topLeft.getYCoord(), 
-				getSize(), 
-				getSize());
+		g.drawRect(topLeft.getXCoord(), topLeft.getYCoord(), getSize(), getSize());
 		
 	}
+    }
 }
